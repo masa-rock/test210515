@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+django_heroku.settings(locals())
 
 ROOT_URLCONF = 'app_1.urls'
 
