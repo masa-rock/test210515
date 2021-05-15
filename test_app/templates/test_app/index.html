@@ -1,0 +1,6 @@
+{% extends "test_app/base.html" %}
+
+{% block main %}
+トップページです。
+<a href="{% url 'test_app:real' %}" >リアルタイムシミュレーション</a>
+{% endblock %}

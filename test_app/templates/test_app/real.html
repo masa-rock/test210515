@@ -1,0 +1,21 @@
+{% extends "test_app/base.html" %}
+{% block main %}
+<h4>リアルシミュレーションで条件に当てはまった銘柄を抽出</h4>
+
+  <p>ボリバン+2σにタッチ</p>
+  <table>
+    <tr>
+      <th>コード</th>
+      <th>終値</th>
+      <th>ボリバン2σ</th>
+    </tr>
+    {% for data in datas %}
+    <tr>
+      <th><a href="#">{{data.code}}</a></th>
+      <th>{{data.close}}</th>
+      <th>{{data.bb}}</th>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
