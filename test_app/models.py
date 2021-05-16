@@ -9,7 +9,7 @@ class  Realsimulation(models.Model):
       low = models.FloatField(null=True,blank=True)
       close = models.FloatField(null=True,blank=True)
       volume = models.IntegerField(null=True,blank=True)
-      currency = models.IntegerField(null=True,blank=True)
+      currency = models.CharField(max_length=255)
       code = models.CharField(max_length=255)
       rsi = models.FloatField(null=True,blank=True)
       days50 = models.FloatField(null=True,blank=True)
