@@ -1,1 +1,1 @@
-web: gunicorn django_app_1.wsgi --log-file
+web: gunicorn app_1.wsgi:application -b 0.0.0.0:$PORT
