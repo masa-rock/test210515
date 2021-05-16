@@ -9,11 +9,18 @@
       <th>終値</th>
       <th>ボリバン2σ</th>
     </tr>
-    {% for data in datas %}
+    <!-- {% for data in datas %}
     <tr>
       <th><a href="#">{{data.code}}</a></th>
       <th>{{data.close}}</th>
       <th>{{data.bb}}</th>
+    </tr>
+    {% endfor %} -->
+   {% for data in datas %}
+    <tr>
+      <th><a href="#">{{data.code}}</a></th>
+      <th>{{data.meigara}}</th>
+      <th>{{data.uriagetuuki1}}</th>
     </tr>
     {% endfor %}
   </table>
