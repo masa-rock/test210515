@@ -78,12 +78,34 @@ WSGI_APPLICATION = 'app_1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# import dj_database_url
+# from dotenv import (
+#     find_dotenv,
+#     load_dotenv,
+# )
+# load_dotenv(find_dotenv())
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600),
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ddfi3h9sdc0dd5',
+        'USER': 'hwssayksgwdmnv',
+        'PASSWORD': 'ad57f0eac832cb0fed70954297a7f7669f97cf29356b4cf357915a5f28cbc012',
+        'HOST':'ec2-18-215-111-67.com',
+        'PORT':5432,
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
