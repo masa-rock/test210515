@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Fandamental, Realsimulation
+from .models import Fandamental, Realsimulation_v1
 from django.template.response import TemplateResponse
 from django.db.models import F
 
@@ -16,6 +16,6 @@ def realsimulation(request):
     #     'days150__gt':F('days200')
     # }
     # datas = Realsimulation.objects.all().filter(**condition)
-    datas = Realsimulation.objects.all()
+    datas = Realsimulation_v1.objects.all()
 
     return render(request,"test_app/real.html",{'datas': datas})
