@@ -18,6 +18,9 @@ class  Realsimulation(models.Model):
       weeks20 = models.FloatField(null=True,blank=True)
       stdev = models.FloatField(null=True,blank=True)
       bb = models.FloatField(null=True,blank=True)
+      buy = models.CharField(max_length=255)
+      sell = models.CharField(max_length=255)
+      version = models.CharField(max_length=255)
       def __str__(self):
             return self.code
 

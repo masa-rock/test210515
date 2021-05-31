@@ -16,6 +16,6 @@ def realsimulation(request):
     #     'days150__gt':F('days200')
     # }
     # datas = Realsimulation.objects.all().filter(**condition)
-    datas = Fandamental.objects.all()
+    datas = Realsimulation.objects.all()
 
     return render(request,"test_app/real.html",{'datas': datas})
