@@ -1,0 +1,25 @@
+{% extends "test_app/base.html" %}
+{% block main %}
+<h4>ファンダメンタルズ結果一覧</h4>
+
+  <p>全結果</p>
+  <table>
+    <tr>
+      <th>コード</th>
+      <th>最新のデータの日付</th>
+      <th>最新</th>
+      <th>一個前</th>
+      <th>も一個前</th>
+    </tr> 
+   {% for data in datas %}
+    <tr>
+      <th>{{ data.code}}</th>
+      <th>{{ data.kessan_0 }}</th>
+      <th>{{ data.rieki_jousyou_0 }}</th>
+      <th>{{ data.rieki_jousyou_1 }}</th>
+      <th>{{ data.rieki_jousyou_2 }}</th>
+    </tr> 
+    {% endfor %}
+  </table>
+
+{% endblock %}

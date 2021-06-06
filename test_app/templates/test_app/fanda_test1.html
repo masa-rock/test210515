@@ -1,0 +1,24 @@
+{% extends "test_app/base.html" %}
+{% block main %}
+<h4>条件①結果一覧</h4>
+
+  <p>結果：{{counter}}件見つかりました。</p>
+  
+  <table>
+    <tr>
+      <th>コード</th>
+      <th>rieki_0</th>
+      <th>rieki_1</th>
+      <th>rieki_2</th>
+    </tr> 
+   {% for data in datas %}
+    <tr>
+      <th><a href="#">{{ data.code}}</a></th>
+      <th>{{ data.rieki_0 }}</th>
+      <th>{{ data.rieki_1 }}</th>
+      <th>{{ data.rieki_2 }}</th>
+    </tr> 
+    {% endfor %}
+  </table>
+
+{% endblock %}

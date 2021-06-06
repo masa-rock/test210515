@@ -1,0 +1,16 @@
+{% extends "test_app/base.html" %}
+{% block main %}
+<h4>ファンダメンタルズ結果一覧</h4>
+
+<div>
+  <a href="{% url 'test_app:fanda_all' %}" >すべての結果</a>
+  <a href="{% url 'test_app:fanda_test1' %}" >条件①</a>
+</div>
+
+<div>
+  <h3>条件一覧<br></h3>
+  <p>条件①：直近1~2四半期の利益が+100%以上 & 直近3四半期の増益率が+40%以上<br></p>
+</div>
+
+
+{% endblock %}

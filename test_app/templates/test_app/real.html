@@ -5,22 +5,17 @@
   <p>ボリバン+2σにタッチ</p>
   <table>
     <tr>
+      <th>日にち</th>
       <th>コード</th>
       <th>終値</th>
       <th>ボリバン2σ</th>
-    </tr>
-    {% for data in datas %}
-    <tr>
-      <th><a href="#">{{data.code}}</a></th>
-      <th>{{data.close}}</th>
-      <th>{{data.bb}}</th>
-    </tr>
-    {% endfor %} 
+    </tr> 
    {% for data in datas %}
     <tr>
+      <th>{{ data.Date }}</th>
       <th><a href="#">{{data.code}}</a></th>
-      <th>{{data.close}}</th>
-      <th>{{data.bb}}</th>
+      <th>{{data.Close}}</th>
+      <th>{{data.BB}}</th>
     </tr> 
     {% endfor %}
   </table>
