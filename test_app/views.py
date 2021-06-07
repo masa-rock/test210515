@@ -43,10 +43,12 @@ def fandamental_all(request):
     return render(request,"test_app/fanda_all.html",{'datas': datas})
 
 def fandamental_test1(request):
-    # condition = {
-    #     'rieki_jousyou_0__gte':F("rieki_jousyou_1")
-    # }
-    datas = Fanda.objects.all().filter(rieki_jousyou_0__gte = 60)
+    condition = {
+        'rieki_jousyou_0__gte':100,
+        'rieki_jousyou_1__gte':100,
+        'rieki_jousyou_2__gte':40,
+    }
+    datas = Fanda.objects.all().filter(**condition)
     counter = datas.count()
     return render(request,"test_app/fanda_test1.html",{'datas': datas,
     'counter':counter

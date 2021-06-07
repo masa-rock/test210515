@@ -1,22 +1,22 @@
 {% extends "test_app/base.html" %}
 {% block main %}
-<h4>条件①結果一覧</h4>
+<h4>条件①結果一覧(直近四半期利益：100%以上、直近二四半期利益：100%以上、直近3四半期利益：40%以上)</h4>
 
   <p>結果：{{counter}}件見つかりました。</p>
   
   <table>
     <tr>
       <th>コード</th>
-      <th>rieki_0</th>
-      <th>rieki_1</th>
-      <th>rieki_2</th>
+      <th>直近の四半期利益上昇率</th>
+      <th>直近二四半期利益上昇率</th>
+      <th>直近三四半期利益上昇率</th>
     </tr> 
    {% for data in datas %}
     <tr>
-      <th><a href="#">{{ data.code}}</a></th>
-      <th>{{ data.rieki_0 }}</th>
-      <th>{{ data.rieki_1 }}</th>
-      <th>{{ data.rieki_2 }}</th>
+      <th><a href="https://kabutan.jp/stock/finance?code={{data.code}}">{{ data.code}}</a></th>
+      <th>{{ data.rieki_jousyou_0 }}</th>
+      <th>{{ data.rieki_jousyou_1 }}</th>
+      <th>{{ data.rieki_jousyou_2 }}</th>
     </tr> 
     {% endfor %}
   </table>
