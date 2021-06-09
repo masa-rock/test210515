@@ -2,6 +2,24 @@
 
 {% block main %}
 トップページです。
-<a href="{% url 'test_app:real' %}" >リアルタイムシミュレーション</a>
-<a href="{% url 'test_app:fanda' %}" >ファンダメンタルズ</a>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">リアルタイムシミュレーション</h5>
+        <p class="card-text">最新の株価を使用して、シミュレーションを行っています</p>
+        <a href="{% url 'test_app:real' %}" class="btn btn-primary">結果はコチラ</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">ファンダメンタルズ</h5>
+        <p class="card-text">企業のファンダメンタルズ分析の結果を掲載しています。</p>
+        <a href="{% url 'test_app:fanda' %}" class="btn btn-primary">結果はコチラ</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
