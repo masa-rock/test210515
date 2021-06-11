@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-gk2*e2h#ya!5e=7k5)z$)qf9-39hj&053zev0&-1z)2v5rrye-
 import django_heroku
 
 # 本番公開する場合はDEBUG = Falseにすること！！！！ 210610
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
 

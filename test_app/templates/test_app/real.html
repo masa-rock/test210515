@@ -3,7 +3,7 @@
 <h4>リアルシミュレーションで条件に当てはまった銘柄を抽出</h4>
 
   <p>ボリバン+2σにタッチ</p>
-  <table>
+  <!-- <table>
     <tr>
       <th>日にち</th>
       <th>コード</th>
@@ -18,6 +18,27 @@
       <th>{{data.BB}}</th>
     </tr> 
     {% endfor %}
+  </table> -->
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">日にち</th>
+        <th scope="col">コード</th>
+        <th scope="col">終値</th>
+        <th scope="col">ボリバン+2σ</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in datas %}
+      <tr>
+        <th scope="row">{{ data.Date }}</th>
+        <td><a href="#">{{data.code}}</td>
+        <td>{{data.Close}}</td>
+        <td>{{data.BB}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
 
 {% endblock %}
