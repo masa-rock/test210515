@@ -12,17 +12,6 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/">弥富投資分析サイト</a>
         </nav>
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">リアルタイムシミュレーション</h5>
-                  <p class="card-text">最新の株価を使用して、シミュレーションを行っています</p>
-                  <a href="{% url 'test_app:real' %}" class="btn btn-primary">結果はコチラ</a>
-                </div>
-              </div>
-            </div>
-        <p>投資成績を上げるためのサイト</p>
         <!-- <img src="{% static 'test_app/dash.png'%}" width="300" height="300"> -->
         <div class="container mt-4">
         {% block main %}
