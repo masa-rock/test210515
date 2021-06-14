@@ -7,6 +7,7 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">コード</th>
+        <th scope="col">銘柄</th>
         <th scope="col">直近の四半期利益上昇率</th>
         <th scope="col">直近二四半期利益上昇率</th>
         <th scope="col">直近三四半期利益上昇率</th>
@@ -16,6 +17,7 @@
       {% for data in datas %}
       <tr>
         <th scope="row"><a href="https://kabutan.jp/stock/finance?code={{data.code}}">{{ data.code}}</a></th>
+        <td>{{ data.meigara }}</td>
         <td>{{ data.rieki_jousyou_0 }}</td>
         <td>{{ data.rieki_jousyou_1 }}</td>
         <td>{{ data.rieki_jousyou_2 }}</td>

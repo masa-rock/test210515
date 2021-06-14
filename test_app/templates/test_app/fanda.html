@@ -1,8 +1,19 @@
 {% extends "test_app/base.html" %}
 {% block main %}
 <h4>ファンダメンタルズ結果一覧</h4>
+<div class="row mt-4">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">ミネルヴィ二の条件</h5>
+        <p class="card-text">直近1~2四半期の利益が+100%以上 ＆ 直近3四半期の増益率が+40%以上 ＆ 売上増加率3四半期連続で0%以上</p>
+        <a href="{% url 'test_app:fanda_test3' %}" class="btn btn-primary">結果はコチラ</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="row">
+<div class="row mt-4">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
@@ -22,5 +33,15 @@
     </div>
   </div>
 </div>
-
+<div class="row mt-4">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">条件②</h5>
+        <p class="card-text">直近4四半期の利益の増加率が10%以上</p>
+        <a href="{% url 'test_app:fanda_test2' %}" class="btn btn-primary">結果はコチラ</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

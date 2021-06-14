@@ -100,3 +100,16 @@ class Fanda(models.Model):
       rieki_jousyou_2 = models.IntegerField(null=True,blank=True)
       uriage_jousyou_3 = models.IntegerField(null=True,blank=True)
       rieki_jousyou_3 = models.IntegerField(null=True,blank=True)
+
+class Realsimulation_result_v1(models.Model):
+      Code = models.CharField(max_length=255)
+      Buy_date = models.DateTimeField()
+      Buy_cost = models.FloatField(null=True,blank=True)
+      Day50_day200 = models.FloatField(null=True,blank=True)
+      Sell_date = models.DateTimeField()
+      Sell_cost = models.FloatField(null=True,blank=True)
+      Profit_and_lost =models.FloatField(null=True,blank=True)
+      Sell_pattern = models.CharField(max_length=255)
+      Version = models.CharField(max_length=255)
+      No = models.IntegerField(null=True,blank=True)
+      Id = models.IntegerField(primary_key=True)

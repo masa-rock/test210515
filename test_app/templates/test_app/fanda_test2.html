@@ -1,0 +1,31 @@
+{% extends "test_app/base.html" %}
+{% block main %}
+<h4>条件②結果一覧(直近四半期利益：10%以上、直近二四半期利益：10%以上、直近3四半期利益：10%以上、直近4四半期利益：10%以上)</h4>
+
+  <p>結果：{{counter}}件見つかりました。</p>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">コード</th>
+        <th scope="col">銘柄</th>
+        <th scope="col">直近の四半期利益上昇率</th>
+        <th scope="col">直近二四半期利益上昇率</th>
+        <th scope="col">直近三四半期利益上昇率</th>
+        <th scope="col">直近四四半期利益上昇率</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in datas %}
+      <tr>
+        <th scope="row"><a href="https://kabutan.jp/stock/finance?code={{data.code}}">{{ data.code}}</a></th>
+        <td>{{ data.meigara }}</td>
+        <td>{{ data.rieki_jousyou_0 }}</td>
+        <td>{{ data.rieki_jousyou_1 }}</td>
+        <td>{{ data.rieki_jousyou_2 }}</td>
+        <td>{{ data.rieki_jousyou_3 }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
