@@ -1,17 +1,93 @@
 {% extends "test_app/base.html" %}
 {% block main %}
-<h4>ファンダメンタルズ結果一覧</h4>
+{% load mathfilters %}
+<h4>利益上昇率が5年連続10%以上</h4>
 
   <p>全結果</p>
-  <table>
+  <p>結果：{{counter}}件見つかりました。</p>
+  <table class="table">
+    <thead class="thead-dark">
     <tr>
       <th>コード</th>
-      <th>最新のデータの日付</th>
-      <th>最新</th>
-      <th>一個前</th>
-      <th>も一個前</th>
-    </tr> 
-   {% for data in datas %}
+      <th>銘柄名</th>
+      <th>利益上昇_1</th>
+      <th>利益上昇_2</th>
+      <th>利益上昇_3</th>
+      <th>利益上昇_4</th>
+      <th>利益上昇_5</th>
+    </tr>
+    </thead>
+    <tbody>
+      {% for page in pages %} 
+        <tr>
+          <th scope="row"><a href="https://kabutan.jp/stock/finance?code={{page.code}}">{{ page.code}}</a></th>
+          <td>{{page.name}}</td>
+          <td>{{page.y_er_0| div:page.y_er_1 |sub:1|mul:100|floatformat}}</td>
+          <td>{{page.y_er_1| div:page.y_er_2 |sub:1|mul:100|floatformat}}</td>
+          <td>{{page.y_er_2| div:page.y_er_3 |sub:1|mul:100|floatformat}}</td>
+          <td>{{page.y_er_3| div:page.y_er_4 |sub:1|mul:100|floatformat}}</td>
+          <td>{{page.y_er_4| div:page.y_er_5 |sub:1|mul:100|floatformat}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+    <!-- ページネーション -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        {% if pages.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ pages.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&lt;</span>
+          </a>
+        </li>
+        {% endif %}
+      
+        {% if pages.number > 3 %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1" aria-label="First">1</a>
+        </li>
+        {% endif %}
+      
+        {% if pages.number > 4 %}
+        <li class="page-item"><span class="page-link" aria-hidden="true">...</span></li>
+        {% endif %}
+      
+        {% for link_page in pages.paginator.page_range %}
+        {% if link_page == pages.number %}
+        <li class="page-item active">
+          <a class="page-link" href="?page={{ link_page }}">
+            {{ link_page }}
+          </a>
+        </li>
+        {% elif link_page < pages.number|add:3 and link_page > pages.number|add:-3 %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ link_page }}">
+            {{ link_page }}
+          </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      
+        {% if pages.number < pages.paginator.num_pages|add:-3 %}
+        <li class="page-item"><span class="page-link" aria-hidden="true">...</span></li>
+        {% endif %}
+      
+        {% if pages.number < pages.paginator.num_pages|add:-2 %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ pages.paginator.num_pages }}" aria-label="Last">{{ pages.paginator.num_pages}}</a>
+        </li>
+        {% endif%}
+      
+        {% if pages.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{pages.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&gt;</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+   <!-- {% for data in datas %}
     <tr>
       <th>{{ data.code}}</th>
       <th>{{ data.kessan_0 }}</th>
@@ -20,6 +96,6 @@
       <th>{{ data.rieki_jousyou_2 }}</th>
     </tr> 
     {% endfor %}
-  </table>
+  </table> -->
 
 {% endblock %}

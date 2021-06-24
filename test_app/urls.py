@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name="test_app"
 
@@ -12,4 +14,6 @@ urlpatterns = [
     path('fandatest2/',views.fandamental_test2,name="fanda_test2"),
     path('fandatest3/',views.fandamental_test3,name="fanda_test3"),
     path('real_result/',views.real_result,name="real_result"),
+    path('result_squeeze',views.result_squeeze,name="result_squeeze"),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

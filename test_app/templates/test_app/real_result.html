@@ -1,6 +1,17 @@
 {% extends "test_app/base.html" %}
 {% block main %}
 <h4>realsimulationの結果</h4>
+<form method="POST" action="{% url 'test_app:result_squeeze' %}" name="日付を選択">
+  {{form.as_p}}
+  <!-- {% for data in form %}
+  {{data}}
+  {% endfor %} -->
+  {% csrf_token %}
+  <button type="submit" class="btn btn-outline-info">SUBMIT</button>
+</form>
+<!-- <form method="POST">
+  {{form.as_p}}
+</form> -->
 {% if profit > 0 %}
 <h3 class="text-success">損益合計：{{profit}}</h3>
 {% else %}
