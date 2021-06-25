@@ -4,7 +4,7 @@
 <h4>利益上昇率が5年連続10%以上</h4>
 
   <p>全結果</p>
-  <p>結果：{{counter}}件見つかりました。</p>
+  <p>結果：0件見つかりました。</p>
   <table class="table">
     <thead class="thead-dark">
     <tr>
@@ -19,6 +19,7 @@
     </thead>
     <tbody>
       {% for page in pages %} 
+      {% if page.y_er_1 > 0 and page.y_er_2 > 0 and page.y_er_3 > 0 and page.y_er_4 > 0 and page.y_er_5 > 0 %}
         <tr>
           <th scope="row"><a href="https://kabutan.jp/stock/finance?code={{page.code}}">{{ page.code}}</a></th>
           <td>{{page.name}}</td>
@@ -28,6 +29,7 @@
           <td>{{page.y_er_3| div:page.y_er_4 |sub:1|mul:100|floatformat}}</td>
           <td>{{page.y_er_4| div:page.y_er_5 |sub:1|mul:100|floatformat}}</td>
         </tr>
+      {% endif %}
       {% endfor %}
     </tbody>
     </table>

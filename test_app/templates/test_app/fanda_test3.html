@@ -1,6 +1,7 @@
 {% extends "test_app/base.html" %}
 {% block main %}
-<h4>条件①結果一覧(直近四半期利益：100%以上、直近二四半期利益：100%以上、直近3四半期利益：40%以上)、売上上昇比率が3四半期連続で0%以上</h4>
+{% load mathfilters %}
+<h4>10年連続利益上昇率10%以上</h4>
 <!-- {{Input_Form}} -->
   <p>結果：{{counter}}件見つかりました。</p>
   <table class="table">
@@ -8,26 +9,36 @@
       <tr>
         <th scope="col">コード</th>
         <th scope="col">銘柄</th>
-        <th scope="col">直近の四半期利益上昇率</th>
-        <th scope="col">直近二四半期利益上昇率</th>
-        <th scope="col">直近三四半期利益上昇率</th>
-        <th scope="col">直近の四半期売上げ上昇率</th>
-        <th scope="col">直近二四半期売上げ上昇率</th>
-        <th scope="col">直近三四半期売上げ上昇率</th>
+        <th scope="col">利益上昇1</th>
+        <th scope="col">利益上昇2</th>
+        <th scope="col">利益上昇3</th>
+        <th scope="col">利益上昇4</th>
+        <th scope="col">利益上昇5</th>
+        <th scope="col">利益上昇6</th>
+        <th scope="col">利益上昇7</th>
+        <th scope="col">利益上昇8</th>
+        <th scope="col">利益上昇9</th>
+        <th scope="col">利益上昇10</th>
       </tr>
     </thead>
     <tbody>
-      {% for data in datas %}
+      {% for page in pages %}
+      {% if page.y_er_1 > 0 and page.y_er_2 > 0 and page.y_er_3 > 0 and page.y_er_4 > 0 and page.y_er_5 > 0 and page.y_er_6 > 0 and page.y_er_7 > 0 and page.y_er_8 > 0 and page.y_er_9 > 0 and page.y_er_10 > 0 %}
       <tr>
-        <th scope="row"><a href="https://kabutan.jp/stock/finance?code={{data.code}}">{{ data.code}}</a></th>
-        <td>{{ data.meigara }}</td>
-        <td>{{ data.rieki_jousyou_0 }}</td>
-        <td>{{ data.rieki_jousyou_1 }}</td>
-        <td>{{ data.rieki_jousyou_2 }}</td>
-        <td>{{ data.uriage_jousyou_0 }}</td>
-        <td>{{ data.uriage_jousyou_1 }}</td>
-        <td>{{ data.uriage_jousyou_2 }}</td>
+        <th scope="row"><a href="https://kabutan.jp/stock/finance?code={{page.code}}">{{ page.code}}</a></th>
+        <td>{{ page.name }}</td>
+        <td>{{page.y_er_0| div:page.y_er_1 |sub:1|mul:100|floatformat}}</td> 
+        <td>{{page.y_er_1| div:page.y_er_2 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_er_2| div:page.y_er_3 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_er_3| div:page.y_er_4 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_er_4| div:page.y_er_5 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_er_5| div:page.y_er_6 |sub:1|mul:100|floatformat}}</td> 
+        <td>{{page.y_er_6| div:page.y_er_7 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_er_7| div:page.y_er_8 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_er_8| div:page.y_er_9 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_er_9| div:page.y_er_10 |sub:1|mul:100|floatformat}}</td>
       </tr>
+      {% endif %}
       {% endfor %}
     </tbody>
   </table>
