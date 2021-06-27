@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Realsimulation,Fandamental
+from .models import Category,Tag,Post
 
-admin.site.register(Realsimulation)
-admin.site.register(Fandamental)
+admin.site.register(Tag)
+admin.site.register(Post)
+admin.site.register(Category)
 # Register your models here.

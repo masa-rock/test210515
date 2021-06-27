@@ -1,37 +1,33 @@
 {% extends "test_app/base.html" %}
 {% block main %}
 {% load mathfilters %}
-<h4>8四半期連続利益上昇率10%以上</h4>
+<h4>5年連続売上上昇率10%以上</h4>
 
   <p>結果：{{counter}}件見つかりました。</p>
   <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">コード</th>
-        <th scope="col">1四半期</th>
-        <th scope="col">2四半期</th>
-        <th scope="col">3四半期</th>
-        <th scope="col">4四半期</th>
-        <th scope="col">5四半期</th>
-        <th scope="col">6四半期</th>
-        <th scope="col">7四半期</th>
-        <th scope="col">8四半期</th>
+        <th scope="col">銘柄</th>
+        <th scope="col">1年目</th>
+        <th scope="col">2年目</th>
+        <th scope="col">3年目</th>
+        <th scope="col">4年目</th>
+        <th scope="col">5年目</th>
+        
       </tr>
     </thead>
     <tbody>
       {% for page in pages %}
-      {% if page.y_sr_4 > 0 and page.y_sr_5 > 0 and page.y_sr_6 > 0 and page.y_sr_7 > 0 and page.y_sr_8 > 0 and page.y_sr_9 > 0 and page.y_sr_10 > 0 and page.y_sr_11 > 0 %}
+      {% if page.y_u_1 > 0 and page.y_u_2 > 0 and page.y_u_3 > 0 and page.y_u_4 > 0 and page.y_u_5 > 0 %}
       <tr>
         <th scope="row"><a href="https://kabutan.jp/stock/finance?code={{page.code}}">{{ page.code}}</a></th>
         <td>{{page.name}}</td>
-        <td>{{page.s_er_0| div:page.s_er_4 |sub:1|mul:100|floatformat}}</td> 
-        <td>{{page.s_er_1| div:page.s_er_5 |sub:1|mul:100|floatformat}}</td>
-        <td>{{page.s_er_2| div:page.s_er_6 |sub:1|mul:100|floatformat}}</td>
-        <td>{{page.s_er_3| div:page.s_er_7 |sub:1|mul:100|floatformat}}</td>
-        <td>{{page.s_er_4| div:page.s_er_8 |sub:1|mul:100|floatformat}}</td>
-        <td>{{page.s_er_5| div:page.s_er_9 |sub:1|mul:100|floatformat}}</td> 
-        <td>{{page.s_er_6| div:page.s_er_10 |sub:1|mul:100|floatformat}}</td>
-        <td>{{page.s_er_7| div:page.s_er_11 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_u_0| div:page.y_u_1 |sub:1|mul:100|floatformat}}</td> 
+        <td>{{page.y_u_1| div:page.y_u_2 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_u_2| div:page.y_u_3 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_u_3| div:page.y_u_4 |sub:1|mul:100|floatformat}}</td>
+        <td>{{page.y_u_4| div:page.y_u_5 |sub:1|mul:100|floatformat}}</td>
       </tr>
       {% endif %}
       {% endfor %}

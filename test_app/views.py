@@ -1,10 +1,13 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from .models import Fanda, Realsimulation_v1, Realsimulation_result_v1
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from .models import Fanda, Realsimulation_v1, Realsimulation_result_v1, Post
 from django.template.response import TemplateResponse
 from django.db.models import F,Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import InputForm
+from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
 # Create your views here.
 def index(request):
   return TemplateResponse(request,'test_app/index.html')
@@ -55,20 +58,17 @@ def fandamental_all(request):
     return render(request,"test_app/fanda_all.html",{'pages':pages, 'counter':counter,})
 
 def fandamental_test1(request):
-    jousyouritu = 5
+    jousyouritu = 10
     condition ={
-        "s_er_0__gt" : (jousyouritu/100+1)*F("s_er_4"),
-        "s_er_1__gt" : (jousyouritu/100+1)*F("s_er_5"),
-        "s_er_2__gt" : (jousyouritu/100+1)*F("s_er_6"),
-        "s_er_3__gt" : (jousyouritu/100+1)*F("s_er_7"),
-        "s_er_4__gt" : (jousyouritu/100+1)*F("s_er_8"),
-        "s_er_5__gt" : (jousyouritu/100+1)*F("s_er_9"),
-        "s_er_6__gt" : (jousyouritu/100+1)*F("s_er_10"),
-        "s_er_7__gt" : (jousyouritu/100+1)*F("s_er_11"),
+        "y_u_0__gt" : (jousyouritu/100+1)*F("y_u_1"),
+        "y_u_1__gt" : (jousyouritu/100+1)*F("y_u_2"),
+        "y_u_2__gt" : (jousyouritu/100+1)*F("y_u_3"),
+        "y_u_3__gt" : (jousyouritu/100+1)*F("y_u_4"),
+        "y_u_4__gt" : (jousyouritu/100+1)*F("y_u_5"),
     }
     datas = Fanda.objects.filter(**condition)
     counter = datas.count()
-    paginator = Paginator(datas, 20)
+    paginator = Paginator(datas, 100)
     page = request.GET.get('page', 1)
     try:
     	pages = paginator.page(page)
@@ -160,3 +160,23 @@ def result_squeeze(request):
     'counter':counter,
     'profit':profit,
     })
+
+class Index(ListView):
+    model = Post
+class Detail(DetailView):
+    model = Post
+
+class Create(CreateView):
+    model = Post
+    # 編集対象にするフィールド
+    fields = ["title","body","category","tags"]
+
+class Update(UpdateView):
+    model = Post
+    fields = ["title","body","category","tags"]
+
+class Delete(DeleteView):
+    model = Post
+    # 削除した後に移動する先
+    success_url = "/index/"
+

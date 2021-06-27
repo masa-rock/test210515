@@ -1,48 +1,5 @@
 from django.db import models
-
-# Create your models here.
-class  Realsimulation(models.Model):
-      id = models.IntegerField(primary_key=True) 
-      date = models.DateTimeField()
-      open = models.FloatField(null=True,blank=True)
-      high = models.FloatField(null=True,blank=True)
-      low = models.FloatField(null=True,blank=True)
-      close = models.FloatField(null=True,blank=True)
-      volume = models.IntegerField(null=True,blank=True)
-      currency = models.CharField(max_length=255)
-      code = models.CharField(max_length=255)
-      rsi = models.FloatField(null=True,blank=True)
-      days50 = models.FloatField(null=True,blank=True)
-      days150 = models.FloatField(null=True,blank=True)
-      days200 = models.FloatField(null=True,blank=True)
-      weeks20 = models.FloatField(null=True,blank=True)
-      stdev = models.FloatField(null=True,blank=True)
-      bb = models.FloatField(null=True,blank=True)
-      buy = models.CharField(max_length=255)
-      sell = models.CharField(max_length=255)
-      version = models.CharField(max_length=255)
-      def __str__(self):
-            return self.code
-
-class Fandamental(models.Model):
-      id = models.IntegerField() 
-      meigara = models.CharField(max_length=255)
-      code = models.CharField(max_length=255,primary_key=True)
-      uriagetuuki1 = models.FloatField(null=True,blank=True)
-      uriagetuuki2 = models.FloatField(null=True,blank=True)
-      riekituuki1 = models.FloatField(null=True,blank=True)
-      riekituuki2 = models.FloatField(null=True,blank=True)
-      epstuuki1 = models.FloatField(null=True,blank=True)
-      epstuuki2 = models.FloatField(null=True,blank=True)
-      uriageshihanki1 =models.FloatField(null=True,blank=True)
-      uriageshihanki2 =models.FloatField(null=True,blank=True)
-      uriageshihanki3 =models.FloatField(null=True,blank=True)
-      riekishihanki1 =models.FloatField(null=True,blank=True)
-      riekishihanki2 =models.FloatField(null=True,blank=True)
-      riekishihanki3 =models.FloatField(null=True,blank=True)
-      epsshihanki1 =models.FloatField(null=True,blank=True)
-      epsshihanki2 =models.FloatField(null=True,blank=True)
-      epsshihanki3 =models.FloatField(null=True,blank=True)
+from django.urls import reverse_lazy
 
 class  Realsimulation_v1(models.Model):
       id = models.IntegerField(primary_key=True) 
@@ -246,3 +203,26 @@ class Realsimulation_result_v1(models.Model):
       Id = models.IntegerField(primary_key=True)
       def __str__(self) :
           return str(self.Code)
+
+class Category(models.Model):
+      name = models.CharField(max_length=255,blank=False,null=False,unique=True)
+      def __str__(self):
+            return self.name
+
+class Tag(models.Model):
+      name = models.CharField(max_length=255,blank=False,null=False,unique=True)
+      def __str__(self):
+            return self.name
+
+class Post(models.Model):
+      created = models.DateTimeField(auto_now_add=True,editable=False,blank=False,null=False)
+      updated = models.DateTimeField(auto_now=True,editable=False,blank=False,null=False)
+      title = models.CharField(max_length=255,blank=False,null=False)
+      body = models.TextField(blank=True,null=False)
+      category = models.ForeignKey(Category,on_delete=models.CASCADE)
+      tags = models.ManyToManyField(Tag,blank=True)
+      def __str__(self):
+        return self.title
+      def get_absolute_url(self):
+            # reverse_lazy(urlconf,args=[id])はテンプレートでいう{% url "urlconf" id%}
+            return reverse_lazy("test_app:detail",args=[self.id])

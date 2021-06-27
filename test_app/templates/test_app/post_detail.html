@@ -1,0 +1,12 @@
+{% extends "test_app/base.html" %}
+{% load l10n %}
+{% block main %}
+<h2>{{ object.title }}</h2>
+<p><time>{{ object.updated|localize }}</time></p>
+<div class="bg-light ">
+  {{ object.body|linebreaksbr }}
+</div>
+<p><a href="{% url 'test_app:update' object.pk %}">編集</a></p>
+<p><a href="{% url 'test_app:delete' object.pk %}">削除</a></p>
+<p><a href="{% url 'test_app:index' %}">議事録トップに戻る</a></p>
+{% endblock %}
